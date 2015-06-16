@@ -1,10 +1,12 @@
 package Modelo;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Voo {
 	private String numero;
-	private List<Mala> malas;
+	private Set<String> malas = new TreeSet<String>();
 	
 	public Voo(String numero){
 		this.numero = numero;
@@ -18,15 +20,15 @@ public class Voo {
 		this.numero = numero;
 	}
 
-	public List<Mala> getMalas() {
+	public Set<String> getMalas() {
 		return malas;
 	}
 
-	public void setMalas(List<Mala> malas) {
+	public void setMalas(Set<String> malas) {
 		this.malas = malas;
 	}
 
-	public Voo(String numero, List<Mala> malas) {
+	public Voo(String numero, Set<String> malas) {
 		super();
 		this.numero = numero;
 		this.malas = malas;
@@ -36,8 +38,8 @@ public class Voo {
 		String strVoo = "";
 		
 		strVoo += numero + "\n";
-		for(Mala item : malas){
-			strVoo += item.getTag() + "\n";
+		for(String item : malas){
+			strVoo += item + "\n";
 		}
 		
 		return strVoo;
