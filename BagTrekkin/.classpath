@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/RQA/Desktop/Projeto_BagTrekkin/BagTrekkin/jars/AlienRFID.jar"/>
+	<classpathentry kind="lib" path="C:/Users/RQA/Desktop/Projeto_BagTrekkin/Jars/okhttp-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/RQA/Desktop/Projeto_BagTrekkin/Jars/okio-1.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/RQA/Desktop/Projeto_BagTrekkin/Jars/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/RQA/Desktop/Projeto_BagTrekkin/Jars/json-simple-1.1.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,10 @@
+1 - Solicitar lista de malas a partir do numero do voo. (Funcionário de campo) (cliente)
+2 - Enviar lista de malas para o voo solicitado. (Servidor)
+3 - Lista de malas para o voo chega e Inicia-se a verificação das malas. 
+4 - Verificação das malas:
+	4.1 - Se a mala esta na lista -> messagem: "Mala OK: TAGNUMBER"
+	4.2 - Se a mala não esta na lista -> messagem: "Mala WRONG: Voo errado!"
+									  -> Mensagem enviada para o servidor contendo a TAG da mala encontrada.
+									  -> Mala separada
+5 - Se a lista de malas foi verificada completamente -> Mensagem de LISTA DE MALAS COMPLETA para o voo enviada para o servidor
+	Se a lista de malas não foi verficada completamente -> Mensagem de LISTA DE MALAS INCOMPLETA enviada para o servidor

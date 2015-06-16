@@ -1,0 +1,14 @@
+Links projetão:
+	- http://www.javatutorialcorner.com/2013/08/hello-world-restful-web-service.html
+	- http://neo4j.com/docs/stable/server-java-rest-client-example.html#_start_the_server
+	- http://www.vogella.com/tutorials/REST/article.html
+	- http://crunchify.com/how-to-build-restful-service-with-java-using-jax-rs-and-jersey/
+	- https://jersey.java.net/nonav/apidocs/1.4/jersey/com/sun/jersey/api/client/WebResource.html
+	- https://jersey.java.net/nonav/apidocs/1.4/jersey/com/sun/jersey/api/client/Client.html
+	
+	Download okHttp.jar
+	- https://github.com/square/okhttp
+	- http://square.github.io/okhttp/
+	
+	List of HTTP status codes
+	- https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
