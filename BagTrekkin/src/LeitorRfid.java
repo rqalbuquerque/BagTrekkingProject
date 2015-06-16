@@ -2,9 +2,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 import Modelo.Mala;
 import Modelo.Voo;
+import WiFi.Conexao_http;
 
 import com.alien.enterpriseRFID.reader.AlienClass1Reader;
 import com.alien.enterpriseRFID.reader.AlienReaderException;
@@ -94,8 +97,8 @@ public class LeitorRfid {
 			reader.close();
 			//atualiza a lista de malas do voo
 			vooList.setMalas(malas);
-			//message.sendMalasCorretas(malas_corretas);
-			//message.sendMalasErradas(malas_erradas);
+			//con.sendMalasCorretas(malas_corretas);
+			//con.sendMalasErradas(malas_erradas);
 		}
 	}
 	
@@ -108,33 +111,35 @@ public class LeitorRfid {
 	// main para testes
 	public static final void main(String args[]) throws Exception {
 		//Lista de malas para teste
-        List<Mala> lista_malas = new ArrayList<Mala>();
+        /*List<Mala> lista_malas = new ArrayList<Mala>();
         lista_malas.add(new Mala("E200 3411 B802 0115 1612 6723", "Arthur"));
         lista_malas.add(new Mala("E200 2996 9618 0246 2310 256F", "Renato"));
         lista_malas.add(new Mala("E200 6296 9619 0229 0370 EC2B", "Saulo"));
         lista_malas.add(new Mala("E200 2996 9618 0246 2230 2CD7", "David"));
         vooList = new Voo("0001", lista_malas);
+		*/
 		
+		//Leitor
 		LeitorRfid leitor = new LeitorRfid();
-		
-		//Mensagem message = new Mensagem("http://bagtrekkin.herokuapp.com/");
+		//Conexao
+		Conexao_http con = new Conexao_http("http://bagtrekkin.herokuapp.com/");
         
 		Scanner entrada = new Scanner(System.in); 
 		String voo = "";
 		
-		// Cria a thread do botão
+		// Thread do botão
 		FlagBotao botao = new FlagBotao(false);
 		ThreadBotao threadBotao = new ThreadBotao(botao);
 		threadBotao.start();
 		
 		while(true){	
 			
-			//System.out.println("Digite o numero do voo:");
-			//voo = entrada.nextLine();
-			//message.sendNumVoo(voo);
+			System.out.println("Digite o numero do voo:");
+			voo = entrada.nextLine();
+			con.setCurrentFlight(voo);
 			
-			String ListaVoo = "";
-			//ListaVoo = message.getListVoo(voo);
+			Set<String> ListaVoo = new TreeSet<String>();
+			ListaVoo = con.getLuggageList();
 			
 			while(botao.get() != true){
 				try {
@@ -144,6 +149,7 @@ public class LeitorRfid {
 					leitor.encerrar();
 					//System.out.println("Error: " + e.toString());
 				}
+				//se leu alguma coisa, então chama a thread para checar as tags.
 			}
 		}
 	}

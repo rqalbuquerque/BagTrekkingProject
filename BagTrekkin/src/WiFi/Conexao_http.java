@@ -1,17 +1,14 @@
 package WiFi;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import java.lang.Number;
 
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
@@ -26,7 +23,7 @@ public class Conexao_http {
 	private final String strApiKey = "ApiKey api:730cd04e8f4c05e81459ed8efd6bb326deed7efb";
 	private final OkHttpClient client = new OkHttpClient();
 	
-	private List<String> tagList = new ArrayList<String>(); 
+	private Set<String> tagList = new TreeSet<String>(); 
 	
 	private String URLBase;
 	
@@ -74,7 +71,7 @@ public class Conexao_http {
 		return (response.code() == CODE_Ok);
 	}
 	
-	public List<String> getLuggageList() throws IOException, ParseException{
+	public Set<String> getLuggageList() throws IOException, ParseException{
 		Request request = new Request.Builder()
 		  .url("http://bagtrekkin.herokuapp.com/api/v1/luggage/")
 		  .get()
@@ -87,15 +84,13 @@ public class Conexao_http {
 		// Converte do json para o list
 		JSONParser parser = new JSONParser();
 		JSONObject obj = (JSONObject) parser.parse(response.body().string());
-		// Pega o numero de malas
-		JSONObject objMeta = (JSONObject) obj.get("meta");
+	
 		// Pega as tags e coloca na lista 
 		JSONArray objList = (JSONArray) obj.get("objects");
 		for(int i=0; i<objList.size(); i++){
 			JSONObject elmo = (JSONObject) objList.get(i);
 			tagList.add(elmo.get("material_number").toString());
 		}
-		
 		return tagList;
 	}
 	
