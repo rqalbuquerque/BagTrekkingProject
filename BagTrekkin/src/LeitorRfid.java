@@ -14,8 +14,10 @@ public class LeitorRfid {
 	private AlienClass1Reader reader = new AlienClass1Reader();
 	private static Voo vooList;
 	
-	private static Set<String> malas_erradas = new TreeSet<String>();
-	private static Set<String> malas_corretas = new TreeSet<String>();
+	private static final String URL_BagTrekkin = "http://bagtrekkin.herokuapp.com/";
+	
+	private Set<String> malas_erradas = new TreeSet<String>();
+	private Set<String> malas_corretas = new TreeSet<String>();
 
 	//cria um leitor
 	public LeitorRfid() throws Exception {
@@ -95,14 +97,13 @@ public class LeitorRfid {
 	public void encerrar() throws IOException{
 		reader.close();
 	}
-	
-	
+		
 	// main para testes
 	public static final void main(String args[]) throws Exception {
 		//Leitor
 		LeitorRfid leitor = new LeitorRfid();
 		//Conexao
-		Conexao_http con = new Conexao_http("http://bagtrekkin.herokuapp.com/");
+		Conexao_http con = new Conexao_http(URL_BagTrekkin);
         //Entrada 
 		Scanner entrada = new Scanner(System.in); 
 				
@@ -113,6 +114,7 @@ public class LeitorRfid {
 		
 		while(true){	
 			
+			// Define o voo 
 			System.out.println("Digite o numero do voo:");
 			String voo = "";
 			voo = entrada.nextLine();	//TP443
@@ -121,16 +123,20 @@ public class LeitorRfid {
 				System.out.println("Voo setado");
 			}
 			
+			// Obtem a lista de malas do voo
 			vooList = new Voo(voo);
 			Set<String> list = con.getLuggageList();
 			if(list != null){
 				vooList.setMalas(list);
 			}
 			
+			// Imprime a lista
 			for(String s: list){
 				System.out.println(s);
 			}
 			
+			// Leitura até que o botão seja apertada e
+			//  a verificação acabe
 			int i=0;
 			while(botao.get() != true){
 				try {
@@ -141,6 +147,11 @@ public class LeitorRfid {
 				}
 			}
 			
+			// Envia a lista de malas corretas e erradas
+			//con.setCorrectLuggageList(leitor.getMalasCorretas());
+			//con.setWrongLuggageList(leitor.getMalasErradas());
+			
+			// Teste malas corretas e malas erradas
 			System.out.println("Tags malas Corretas:");
 			for(String m: leitor.getMalasCorretas()){
 				System.out.println(m);
