@@ -98,7 +98,7 @@ public class Conexao_http {
 		malas_corretas.addAll(malas_erradas);
 		list = malas_corretas.toArray();
 		strList = formatStrObjectsList(list);
-		System.out.println(strList);
+		//System.out.println(strList);
 		
 		MediaType mediaType = MediaType.parse("application/json");
 		RequestBody body = RequestBody.create(mediaType, strList);
