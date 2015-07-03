@@ -12,7 +12,7 @@ public class ThreadBotao extends Thread{
 	public void run(){
 		
 		Scanner scanner = new Scanner(System.in);
-	    String readString = scanner.nextLine();
+	    String readString;
 	    
 	    while(!flag.get()) {
 	        if (scanner.hasNextLine()){

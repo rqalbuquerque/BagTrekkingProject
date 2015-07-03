@@ -92,11 +92,19 @@ public class Conexao_http {
 	}
 	
 	public boolean setCorrectLuggageList(Set<String> malas_corretas, Set<String> malas_erradas) throws IOException {
-		// Gera uma lista única e converte para o formato adequado 
+		// Gera uma lista única 
+		Set<String> todas_malas = malas_corretas;
+		todas_malas.addAll(malas_erradas);
+		
+		System.out.println("Lista de malas que serao enviadas para o servidor:");
+		for(String n: todas_malas){
+			System.out.println(n);
+		}
+		
 		Object[] list;
+		list = todas_malas.toArray();
+		
 		String strList;
-		malas_corretas.addAll(malas_erradas);
-		list = malas_corretas.toArray();
 		strList = formatStrObjectsList(list);
 		//System.out.println(strList);
 		

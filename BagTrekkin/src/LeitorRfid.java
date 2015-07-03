@@ -79,8 +79,6 @@ public class LeitorRfid {
 						}
 					}
 				}
-				//atualiza a lista de malas do voo
-				//vooList.setMalas(malas);
 			}
 			reader.close();
 		}
@@ -150,10 +148,12 @@ public class LeitorRfid {
 			}
 			
 			// Teste malas corretas e malas erradas
+			System.out.println("Lista de malas corretas:");
 			Set<String> lista_corretas = leitor.getMalasCorretas();
 			for(String n: lista_corretas){
 				System.out.println(n);
 			}
+			System.out.println("Lista de malas erradas:");
 			Set<String> lista_erradas = leitor.getMalasErradas();
 			for(String n: lista_erradas){
 				System.out.println(n);
@@ -166,5 +166,4 @@ public class LeitorRfid {
 			}
 		}
 	}
-
 } 
