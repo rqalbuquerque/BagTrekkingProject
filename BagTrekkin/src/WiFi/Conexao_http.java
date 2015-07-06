@@ -155,8 +155,8 @@ public class Conexao_http {
 		//con.getLuggageList();
 		
 		//POST: lista de malas verificadas
-		Set<String> s1 = new TreeSet();
-		Set<String> s2 = new TreeSet();
+		Set<String> s1 = new TreeSet<String>();
+		Set<String> s2 = new TreeSet<String>();
 		s1.add("E200 6296 9619 0229 0370 EC2B");
 		//System.out.println(con.setCurrentFlight("TP443"));	//TP443
 		System.out.println(con.setCorrectLuggageList(s1,s2));
